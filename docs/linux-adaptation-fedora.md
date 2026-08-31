@@ -67,6 +67,10 @@ pnpm install --frozen-lockfile
 pnpm run configure:audio-engine:linux
 ```
 
+> 注意：`build/default` 与其他 preset 共用目录。若此前用 vcpkg 的 `default`
+> preset 配置过，请先删除 `audio-engine/build/default` 再执行，避免残留
+> `CMAKE_TOOLCHAIN_FILE`/`VCPKG_ROOT` 缓存。
+
 ### 3. 构建并测试
 
 ```bash
