@@ -53,6 +53,26 @@
       }
     },
     {
+      "name": "linux-fedora",
+      "displayName": "Linux Fedora (system libraries)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "TAE_BUILD_NAPI": "ON",
+        "TAE_BUILD_TESTS": "ON",
+        "TAE_ENABLE_WASAPI": "OFF",
+        "TAE_ENABLE_ASIO": "OFF",
+        "TAE_ENABLE_COREAUDIO": "OFF",
+        "TAE_ENABLE_ALSA": "ON"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
       "name": "windows-mingw-static",
       "displayName": "Windows MinGW Static FFmpeg",
       "generator": "Ninja",
@@ -92,6 +112,10 @@
       "configurePreset": "linux-clang-tsan"
     },
     {
+      "name": "linux-fedora",
+      "configurePreset": "linux-fedora"
+    },
+    {
       "name": "windows-mingw-static",
       "configurePreset": "windows-mingw-static"
     }
@@ -100,6 +124,13 @@
     {
       "name": "default",
       "configurePreset": "default",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "linux-fedora",
+      "configurePreset": "linux-fedora",
       "output": {
         "outputOnFailure": true
       }
